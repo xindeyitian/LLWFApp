@@ -1,0 +1,33 @@
+platform:ios,'9.0'
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+install! 'cocoapods', :disable_input_output_paths => true
+target 'LLWFan' do
+
+pod 'YYWebImage'
+pod 'JXCategoryView'
+pod 'JXPagingView/Pager'
+pod 'TZImagePickerController'
+pod 'MJExtension'
+pod 'MJRefresh'
+pod 'SDCycleScrollView'
+pod 'YYModel'
+pod 'IQKeyboardManager'
+pod 'HBDNavigationBar'
+pod 'MBProgressHUD'
+pod 'SDAutoLayout'
+pod 'pop','~>1.0'
+pod 'AFNetworking'
+pod 'TMCache', '~> 2.1.0'
+pod 'YYModel'
+pod 'AZTools'
+pod 'SDWebImage'
+pod 'MyLayout'
+pod 'GuideImageView'
+pod 'MyLayout'
+pod 'BHAddressParser'
+pod 'JSBadgeView'
+pod 'Masonry'
+pod 'AFNetworking+RetryPolicy'
+pod "Qiniu", "~> 8.4.1"
+
+end

@@ -1,0 +1,231 @@
+//
+//  PrefixHeader.pch
+//  LLWFan
+//
+//  Created by MAC on 2022/3/21.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <Foundation/Foundation.h>
+#import <MBProgressHUD.h>
+#import "THUserManager.h"
+#import "THAPPService.h"
+#import <MJExtension.h>
+#import "SCMessageHelper.h"
+#import "UIImageView+WebCache.h"
+#import "UIColor+SCHexColor.h"
+#import "UIColor+Category.h"
+#import "UIViewController+CustomTransitionAnimation.h"
+#import "UIScrollView+ThroughScroll.h"
+#import "CALayer+SCFrame.h"
+#import "UIView+SCFrame.h"
+#import "UIColor+Extension.h"
+#import "NSString+SCCommon.h"
+#import "UIView+SDAutoLayout.h"
+#import "NSDictionary+SCCommon.h"
+#import "THHttpManager.h"
+#import "LCountdownButton.h"
+#import "model.h"
+#import "SDWebImage.h"
+#import "MJRefresh.h"
+#import "UpLoadUserpicTool.h"
+#import "UIImageView+WebCache.h"
+#import "DHCCToolsMethod.h"
+#import "UIView+AZGradient.h"
+#import <WebKit/WebKit.h>
+#import "BaseButton.h"
+#import "BaseLabel.h"
+#import "ThBaseTableViewCell.h"
+#import "KLCPopup.h"
+#import "SDCycleScrollView.h"
+#import "WGTableViewInScrollView.h"
+#import "MyLayout.h"
+#import "THHttpHelper.h"
+#import "UIFont+YH.h"
+#import "UIColor+YH.h"
+#import "JXCategoryTitleView.h"
+#import "JXCategoryTitleSortView.h"
+#import "UITableViewCell+currentVC.h"
+#import <JXCategoryView.h>
+#import <JXPagerView.h>
+#import "XMTool.h"
+#import "UILabel+YBAttributeTextTapAction.h"
+#import "UIButton+Extension.h"
+#import "THBaseView.h"
+#import "JXCategoryIndicatorLineView.h"
+#import "JXCategoryTimelineView.h"
+#import "JXCategoryIndicatorAlignmentLineView.h"
+#import "BRPickerView.h"
+#import "NWTableViewNullView.h"
+#import <YYModel/NSObject+YYModel.h>
+#import "DKSButton.h"
+#import "TextViewLable.h"
+#import "SCCalendarDay.h"
+#import "NSDate+Calendar.h"
+#import "LoginViewController.h"
+#import "UILabel+SCCommon.h"
+#import "LSTPopView.h"
+#import "TZImagePickerController.h"
+#import "YBIBImageData.h"
+#import "YBImageBrowser.h"
+#import "LSTPopViewqqtopView.h"
+#import "AllNoticePopUtility.h"
+#import "AllPopNoticeView.h"
+#import "THBaseNoNavViewController.h"
+#import "UIImage+GIF.h"
+#import "THFlowLayout.h"
+#import "THSearchBaseViewController.h"
+#import "UIImage+SCPureColor.h"
+#import "BHAddressParser.h"
+#import "CreatRightPointUtility.h"
+#import "WWMPlaceholderTextView.h"
+#import "XHPageControl.h"
+#import "Masonry.h"
+#import "PPNumberButton.h"
+#import "QiniuSDK.h"
+
+#define allIsSecret YES
+
+// 日志输出
+#ifdef DEBUG
+#define PLog(...) NSLog(__VA_ARGS__)
+#define PMethod() NSLog(@"%s", __func__)
+#else
+#define PLog(...)
+#define debugMethod()
+#endif
+//网络状态变化
+#define KNotificationNetWorkStateChange @"KNotificationNetWorkStateChange"
+
+//微信授权相关
+#define KNotificationWXLOGIN_AUTHORIZED @"KNotificationWXLOGIN_AUTHORIZED"
+#define KNotificationWXLOGIN_USERCANCELLED @"KNotificationWXLOGIN_USERCANCELLED"
+#define KNotificationWXMIN_WXLaunchMiniProgramResp @"KNotificationWXMIN_WXLaunchMiniProgramResp"
+
+//屏幕相关
+
+#define ScreenWidth     ([UIScreen mainScreen].bounds.size.width)//屏幕宽
+
+#define ScreenHeight    ([UIScreen mainScreen].bounds.size.height)//屏幕高
+
+#define TabbarSafeBottomMargin         (IS_IPHONEX_SERIE ? 34.f : 0.f)
+//宽高
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define IS_IPHONEX (([[UIScreen mainScreen] bounds].size.height - 812) ? NO : YES)
+//判断是否为iPhone X系列
+#define IS_IPHONEX_SERIE \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+
+//View 圆角和加边框
+#define ViewBorderRadius(View, Radius, Width, Color)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]]
+
+//定义UIImage对象
+#define ImageWithFile(_pointer) [UIImage imageWithContentsOfFile:([[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@@%dx", _pointer, (int)[UIScreen mainScreen].nativeScale] ofType:@"png"])]
+#define IMAGE_NAMED(name) [UIImage imageNamed:name]
+
+//发送通知
+#define KPostNotification(name,obj) [[NSNotificationCenter defaultCenter] postNotificationName:name object:obj];
+
+//设置iOS13之后的导航栏
+#define SetIOS13 if (@available(iOS 13.0, *)) {UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];[appearance configureWithOpaqueBackground];appearance.backgroundColor = UIColor.whiteColor;self.navigationController.navigationBar.standardAppearance = appearance;self.navigationController.navigationBar.scrollEdgeAppearance =self.navigationController.navigationBar.standardAppearance;} else {}
+
+//拼接字符串
+#define NSStringFormat(format,...) [NSString stringWithFormat:format,##__VA_ARGS__]
+
+
+
+
+//add   by  hui
+#define getPointX(x)         ScreenWidth*x/375.0f
+#define getPointY(y)         ScreenHeight*y/667.0f
+
+// RGB颜色
+#define kRGBA(r, g, b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+// RGB颜色
+#define kRGB(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+// 随机色
+#define kRandomColor kRGB(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+// 4通道色
+#define kRGBColor16Bit(RGB) [UIColor colorWithRed:((float)((RGB & 0xFF0000) >> 16)) / 255.0 \
+green:((float)((RGB & 0xFF00) >> 8)) / 255.0 \
+blue:((float)((RGB & 0xFF))) / 255.0 \
+alpha:1.0]
+
+#define color_3 [UIColor colorWithHexString:@"333333"]
+#define color_6 [UIColor colorWithHexString:@"666666"]
+#define color_9 [UIColor colorWithHexString:@"999999"]
+#define color_f5 [UIColor colorWithHexString:@"#F5F5F5"]
+
+//高度相关
+
+#define KTabBarHeight ((IS_IPHONEX_SERIE) ? 83 : 49) //tabbar高度
+
+#define KStatusBarHeight ((IS_IPHONEX_SERIE) ? (44) : (20)) //状态栏高度
+#define KNavBarHeight (RootStatusBarHeight + 44) //导航栏高
+#define RootStatusBarHeight [UIApplication sharedApplication].statusBarFrame.size.height //系统方法状态栏高度
+
+//解耦
+#define weakSelf(a)  __weak typeof(a) weakSelf = a;
+
+#define UserDefaults                             [NSUserDefaults standardUserDefaults]
+#define THUserManagerShareTHUserManager            [THUserManager shareTHUserManager]
+#define CurrentWindowRootViewController          [THAPPService WindowRootViewController]
+#define SetCurrentWindowRootViewController(VC)   [THAPPService setWindowRootViewController:(VC)]
+#define kAppDelegate                             [AppDelegate shareAppDelegate]
+#define kRootViewController [UIApplication sharedApplication].delegate.window.rootViewController
+#define kAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+//定义一下 键盘收回  所有的响应的键盘收回
+#define ShareWeichatSucess    @"shareWeichatSucess"
+
+//抖动一个view
+#define shakeView(layer) \
+\
+CAKeyframeAnimation *shakeAnim = [CAKeyframeAnimation animation]; \
+\
+shakeAnim.keyPath = @"transform.translation.x";\
+\
+shakeAnim.duration = 0.15;\
+\
+CGFloat delta = 10;\
+\
+shakeAnim.values = @[@0, @(-delta), @(delta), @0];\
+\
+shakeAnim.repeatCount = 2;\
+\
+[layer addAnimation:shakeAnim forKey:nil];\
+\
+
+
+//单例化一个类
+#define SINGLETON_FOR_HEADER(className) \
+\
++ (className *)shared##className;
+
+
+
+#define SINGLETON_FOR_CLASS(className) \
+\
++ (className *)shared##className { \
+static className *shared##className = nil; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+shared##className = [[self alloc] init]; \
+}); \
+return shared##className; \
+}
+
+#endif /* PrefixHeader_pch */
